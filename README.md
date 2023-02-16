@@ -1,6 +1,7 @@
 # pactice1-evan-behrens
+# practice1-Gandres16
 
-Evan Behrens
+Evan Behrens, Gandres16
 
 I am majoring in statistics and minoring in Data Science and Economics.
 I am learning probabilities and other applications of statistics like forecasting. In Data science we are learning how to use data. 
