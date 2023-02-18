@@ -1,0 +1,63 @@
+---
+title: 'Homework 3'
+author: "Evan Behrens"
+date: "2/10/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#### Due: 2/17/2022 before 11:59pm. Submit in Canvas (file upload).
+
+1. Finish the in-class practice in Slides 3-12 in "Lecture 2-2-Practice for git", link: https://yumouqiu.github.io/DS202-Spring2023/Practice/practice01.html  
+    a. Download the RMarkdown file with these homework instructions to use as a template for your work. Make sure to replace "Your Name" with your name.  
+    b. In the RMarkdown file, write down table of team members, and their github repository links;   
+the number of successful pull requests you made, and the github repository to which you requested a change;  
+the number of pull requests you accepted, and the github repository from which you accepted.  
+
+# Evan Behrens            evan-behrens
+# Andres Gonzalez         Gandres16
+# Brandon Simelgor        Simelgor05
+
+    c. Write down a list with at least 3 tips of how to make working with git/github easier  
+    Learn exactly what a fork is and it will make a lot more sense to understand what you are doing
+    Play around for fun, you will learn new things you can do.
+    you can click code on the green button and then coppy your url to your code.
+
+2. Generate the graph of LifExp vs. gdpPercap for US, Canada (fixed data) and Australia by RMarkdown based on the data set "gapminder-5060", like what we did in the class.  
+Please use Github to collaborate on this problem. For example, one member can create the plot of US in his/her repository. The other member will fork this repository, add the result for the second country, and make a pull request for merging into the main repository. Each member should at least analyze one country and make at least one pull request. **Please submit the RMarkdown file, the output file, and the screen shot of the successful pull request and the merge.**
+
+```{r}
+data <- read.csv("gapminder-5060.csv")
+library(tidyverse)
+library(classdata)
+```
+```{r}
+countries <- c("United States", "Canada" , "Australia")
+subset.countries <-  subset(data, country %in% countries)
+subset.countries$lifeExp[6]<- 69.9
+ggplot(subset.countries, aes(x = gdpPercap, y = lifeExp, color = country)) + 
+  geom_line() +
+  labs(title = "Life Expectancy vs. GDP per Capita",
+       x = "GDP per Capita (USD)",
+       y = "Life Expectancy (years)",
+       color = "Country")
+```
+
+
+3. Write a paragraph (~200 words) describing an example of what you consider data science. Write your paragraph in R Markdown. Include at least 
+    a. one link to a chart or an image and 
+    b. at least one itemized or enumerated list.
+    
+    What I consider to be data science is the use of conceptual and coding skills. You can know how to code very well but if you do not understand what your data is telling you than you will not know what to do with it. Data science involves reasearch into some set of data, this could be any topic in the world as long as you have data for it. You retrieve the data and prepare it and use whatever you need from it, this involves deciding what the explanotry and response variables are going to be and what you are trying to learn. Then you have to be able to tell other people what your data means, this involves creating a presentation of the research, maybe a chart, or graph, etc. The image is a good example of what kind of graph you can make to present your findings. https://static1.squarespace.com/static/58eef8846a4963e429687a4d/t/5a673bb3c8302557d7b5bac3/1516714940880/circlepack_graph.png?format=2500w
+    Here is an example of a list that you could use and work with in data science 
+    https://i2.wp.com/chandoo.org/wp/wp-content/uploads/2019/08/large-dataset-example.png?ssl=1
+    What we did above is set by step data science. We found a data set that we wanted to do research on. We got the data for it, and chose which variables we wanted to look out. Created a presentable graphic that is easy for everybody to read.
+    
+
+Note: your submission is supposed to be fully reproducible, i.e. the TA and I will 'knit' your submission in RStudio. Including the link to the image is the tricky part here. Make sure that you don't use any file structure that depends on your computing environment.
+
+
+For the submission: submit your solution in an **R Markdown file** and (just for insurance) submit the corresponding html (or Word) file with it. 
